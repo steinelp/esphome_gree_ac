@@ -711,7 +711,16 @@ std::string SinclairACCNT::determine_fan_mode()
     //bool    fanTurbo  = (this->serialProcess_.data[protocol::REPORT_FAN_TURBO_BYTE] & protocol::REPORT_FAN_TURBO_MASK) != 0;
 
     uint8_t fan_mode = (this->serialProcess_.data[protocol::REPORT_FAN_SPD2_BYTE] & protocol::REPORT_FAN_MODE_MASK) != 0;
-    return fan_mode;
+    if (fan_mode == 0)
+        return fan_modes::FAN_AUTO;
+    if (fan_mode == 1)
+        return fan_modes::FAN_LOW;
+    if (fan_mode == 2)
+        return fan_modes::FAN_MED;
+    if (fan_mode == 3)
+        return fan_modes::FAN_HIGH;
+
+    
     /* we have extracted all the data, let's do the processing */
     /*
     if      (fanSpeed1 == 0 && fanSpeed2 == 0 && fanQuiet == false && fanTurbo == false)
