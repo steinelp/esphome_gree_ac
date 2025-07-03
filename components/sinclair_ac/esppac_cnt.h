@@ -55,6 +55,8 @@ namespace protocol {
     static const uint8_t REPORT_FAN_TURBO_BYTE = 6;
     static const uint8_t REPORT_FAN_TURBO_MASK = 0b00000001;
 
+    static const uint8_t REPORT_FAN_MODE_MASK = 0b00000011;
+
     static const uint8_t REPORT_TEMP_SET_BYTE  = 5;
     static const uint8_t REPORT_TEMP_SET_MASK  = 0b11110000;
     static const uint8_t REPORT_TEMP_SET_POS   = 4;
