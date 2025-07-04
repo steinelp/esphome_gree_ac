@@ -705,7 +705,7 @@ std::string SinclairACCNT::determine_fan_mode()
     uint8_t fan_mode = (this->serialProcess_.data[protocol::REPORT_FAN_SPD2_BYTE] & protocol::REPORT_FAN_MODE_MASK);
 
     if (fanTurbo)
-        return fan_modes::FAN_TURBO
+        return fan_modes::FAN_TURBO;
     else if (fan_mode == 0)
         return fan_modes::FAN_AUTO;
     else if (fan_mode == 1)
