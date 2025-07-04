@@ -301,7 +301,7 @@ void SinclairACCNT::send_packet()
     // packet[protocol::REPORT_FAN_SPD1_BYTE] |= (fanSpeed1 << protocol::REPORT_FAN_SPD1_POS);
     // packet[protocol::REPORT_FAN_SPD2_BYTE] |= (fanSpeed2 << protocol::REPORT_FAN_SPD2_POS);
     
-    packet[protocol::REPORT_FAN_SPD2_BYTE] |= this->custom_fan_mode;
+    packet[protocol::REPORT_FAN_SPD2_BYTE] |= (unsigned char) this->custom_fan_mode;
     
     if (fanTurbo)
     {
