@@ -883,7 +883,7 @@ bool SinclairACCNT::determine_plasma(){
 }
 
 bool SinclairACCNT::determine_beeper(){
-    return (this->serialProcess_.data[protocol::REPORT_BEEPER_BYTE] & protocol::REPORT_BEEPER_MASK) != 0;
+    return (1);
 }
 
 bool SinclairACCNT::determine_sleep(){
