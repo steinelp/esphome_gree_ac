@@ -649,7 +649,6 @@ bool SinclairACCNT::processUnitReport()
     this->update_display_unit(determine_display_unit());
 
     this->update_plasma(determine_plasma());
- //   this->update_beeper(determine_beeper());
     this->update_sleep(determine_sleep());
     this->update_xfan(determine_xfan());
     this->update_save(determine_save());
@@ -881,10 +880,6 @@ bool SinclairACCNT::determine_plasma(){
     bool plasma2 = (this->serialProcess_.data[protocol::REPORT_PLASMA2_BYTE] & protocol::REPORT_PLASMA2_MASK) != 0;
     return plasma1 || plasma2;
 }
-
-//bool SinclairACCNT::determine_beeper(){
-//    return (1);
-//}
 
 bool SinclairACCNT::determine_sleep(){
     return (this->serialProcess_.data[protocol::REPORT_SLEEP_BYTE] & protocol::REPORT_SLEEP_MASK) != 0;
