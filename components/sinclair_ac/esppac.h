@@ -100,6 +100,7 @@ class SinclairAC : public Component, public uart::UARTDevice, public climate::Cl
         void set_display_unit_select(select::Select *display_unit_select);
 
         void set_plasma_switch(switch_::Switch *plasma_switch);
+        void set_beeper_switch(switch_::Switch *beeper_switch);
         void set_sleep_switch(switch_::Switch *sleep_switch);
         void set_xfan_switch(switch_::Switch *plasma_switch);
         void set_save_switch(switch_::Switch *plasma_switch);
@@ -117,6 +118,7 @@ class SinclairAC : public Component, public uart::UARTDevice, public climate::Cl
         select::Select *display_unit_select_     = nullptr; /* Select for setting display temperature unit */
 
         switch_::Switch *plasma_switch_          = nullptr; /* Switch for plasma */
+        switch_::Switch *beeper_switch_          = nullptr; /* Switch for beeper */
         switch_::Switch *sleep_switch_           = nullptr; /* Switch for sleep */
         switch_::Switch *xfan_switch_            = nullptr; /* Switch for X-fan */
         switch_::Switch *save_switch_            = nullptr; /* Switch for save */
@@ -130,6 +132,7 @@ class SinclairAC : public Component, public uart::UARTDevice, public climate::Cl
         std::string display_unit_state_;
 
         bool plasma_state_;
+        bool beeper_state_;
         bool sleep_state_;
         bool xfan_state_;
         bool save_state_;
@@ -156,6 +159,7 @@ class SinclairAC : public Component, public uart::UARTDevice, public climate::Cl
         void update_display_unit(const std::string &display_unit);
 
         void update_plasma(bool plasma);
+        void update_beeper(bool beeper);
         void update_sleep(bool sleep);
         void update_xfan(bool xfan);
         void update_save(bool save);
@@ -167,6 +171,7 @@ class SinclairAC : public Component, public uart::UARTDevice, public climate::Cl
         virtual void on_display_unit_change(const std::string &display_unit) = 0;
 
         virtual void on_plasma_change(bool plasma) = 0;
+        virtual void on_beeper_change(bool beeper) = 0;
         virtual void on_sleep_change(bool sleep) = 0;
         virtual void on_xfan_change(bool xfan) = 0;
         virtual void on_save_change(bool save) = 0;
