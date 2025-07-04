@@ -1,11 +1,13 @@
-# ESPHOME component to support Gree/Sinclair AC units
+# ESPHOME component to support Gree/Sinclair/Daizuki/TGM AC units
 This repository adds support for ESP32-based WiFi modules to interface with Gree/Sinclair AC units.
+It's forked from https://github.com/piotrva/esphome_gree_ac, big thanks to @piotrva for his work!
+This is just a small adaptation to fix the fan mode. It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
 **USE AT YOUR OWN RISK!**
 
 Work is still in progress!
 
-Tested with Sinclair AC (MV-H09BIF), mostly works, sometimes need to send parameter change twice - need to investigate.
+Tested with my Daizuki and TSM AC's, mostly works, sometimes need to send parameter change twice - need to investigate.
 
 Communication protocol is based on my own reverse-engineering.
 
