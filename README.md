@@ -14,22 +14,6 @@ Create a new project in the ESPbuilder from Home assistant and use my YAML.
 Then you should be able to compile it. I think you can flash directly from Home Assistant,
 but I downloaded the compiled binary and flashed with: https://github.com/esphome/esphome-flasher/releases
 
-See the photo in my github for wiring.
+See the photos for wiring.
 
 **USE AT YOUR OWN RISK!**
-
-Work is still in progress!
-
-Tested with my Daizuki and TSM AC's, mostly works, sometimes need to send parameter change twice - need to investigate.
-
-Communication protocol is based on my own reverse-engineering.
-
-ESPHome interface/binding based on:
-* https://github.com/DomiStyle/esphome-panasonic-ac
-
-**NOTES**
-* It was reported [#1](https://github.com/piotrva/esphome_gree_ac/issues/1) that with some changes the code works with Lennox li024ci AC
-
-**TODO**
-* Support Timers - maybe unnecessray as timers can be managed by Home Assistant
-* Support Time sync - maybe unnecessray as timers can be managed by Home Assistant
