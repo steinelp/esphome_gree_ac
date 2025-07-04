@@ -194,7 +194,7 @@ class SinclairACCNT : public SinclairAC {
         std::string determine_display_unit();
 
         bool determine_plasma();
-        bool determine_beeper();
+      //  bool determine_beeper();
         bool determine_sleep();
         bool determine_xfan();
         bool determine_save();
