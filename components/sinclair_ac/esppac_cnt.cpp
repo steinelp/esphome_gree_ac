@@ -247,6 +247,7 @@ void SinclairACCNT::send_packet()
         fanSpeed2 = 1;
         fanQuiet  = false;
         fanTurbo  = false;
+        packet[protocol::REPORT_FAN_SPD2_BYTE] |= 1;
     }
     else if (this->custom_fan_mode == fan_modes::FAN_QUIET)
     {
@@ -261,6 +262,7 @@ void SinclairACCNT::send_packet()
         fanSpeed2 = 2;
         fanQuiet  = false;
         fanTurbo  = false;
+        packet[protocol::REPORT_FAN_SPD2_BYTE] |= 2;
     }
     else if (this->custom_fan_mode == fan_modes::FAN_MED)
     {
@@ -282,6 +284,7 @@ void SinclairACCNT::send_packet()
         fanSpeed2 = 3;
         fanQuiet  = false;
         fanTurbo  = false;
+        packet[protocol::REPORT_FAN_SPD2_BYTE] |= 3;
     }
     else if (this->custom_fan_mode == fan_modes::FAN_TURBO)
     {
@@ -301,7 +304,7 @@ void SinclairACCNT::send_packet()
     // packet[protocol::REPORT_FAN_SPD1_BYTE] |= (fanSpeed1 << protocol::REPORT_FAN_SPD1_POS);
     // packet[protocol::REPORT_FAN_SPD2_BYTE] |= (fanSpeed2 << protocol::REPORT_FAN_SPD2_POS);
     
-    packet[protocol::REPORT_FAN_SPD2_BYTE] |= (char) this->custom_fan_mode[0];
+   
     
     if (fanTurbo)
     {
