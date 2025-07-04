@@ -159,6 +159,7 @@ class SinclairACCNT : public SinclairAC {
         void on_display_unit_change(const std::string &display_unit) override;
 
         void on_plasma_change(bool plasma) override;
+        void on_beeper_change(bool beeper) override;
         void on_sleep_change(bool sleep) override;
         void on_xfan_change(bool xfan) override;
         void on_save_change(bool save) override;
@@ -193,6 +194,7 @@ class SinclairACCNT : public SinclairAC {
         std::string determine_display_unit();
 
         bool determine_plasma();
+        bool determine_beeper();
         bool determine_sleep();
         bool determine_xfan();
         bool determine_save();
