@@ -64,6 +64,8 @@ climate:
       name: ${devicename} Display Unit
     plasma_switch:
       name: ${devicename} Plasma
+    beeper_switch:
+      name: ${devicename} Beeper      
     sleep_switch:
       name: ${devicename} Sleep
     xfan_switch:
