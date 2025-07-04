@@ -466,6 +466,12 @@ void SinclairACCNT::send_packet()
         packet[protocol::REPORT_PLASMA2_BYTE] |= protocol::REPORT_PLASMA2_MASK;
     }
 
+    /* BEEPER --------------------------------------------------------------------------- */
+    if (this->sleep_state_)
+    {
+        packet[protocol::REPORT_BEEPER_BYTE] |= protocol::REPORT_BEEPER_MASK;
+    }
+
     /* SLEEP --------------------------------------------------------------------------- */
     if (this->sleep_state_)
     {
@@ -484,8 +490,6 @@ void SinclairACCNT::send_packet()
         packet[protocol::REPORT_SAVE_BYTE] |= protocol::REPORT_SAVE_MASK;
     }
 
-    packet[protocol::REPORT_BEEPER_BYTE] |= 1;
-    
     /* Do the command, length */
     packet.insert(packet.begin(), protocol::CMD_OUT_PARAMS_SET);
     packet.insert(packet.begin(), protocol::SET_PACKET_LEN + 2); /* Add 2 bytes as we added a command and will add checksum */
@@ -645,6 +649,7 @@ bool SinclairACCNT::processUnitReport()
     this->update_display_unit(determine_display_unit());
 
     this->update_plasma(determine_plasma());
+    this->update_beeper(determine_beeper());
     this->update_sleep(determine_sleep());
     this->update_xfan(determine_xfan());
     this->update_save(determine_save());
@@ -877,6 +882,10 @@ bool SinclairACCNT::determine_plasma(){
     return plasma1 || plasma2;
 }
 
+bool SinclairACCNT::determine_beeper(){
+    return (this->serialProcess_.data[protocol::REPORT_BEEPER_BYTE] & protocol::REPORT_BEEPER_MASK) != 0;
+}
+
 bool SinclairACCNT::determine_sleep(){
     return (this->serialProcess_.data[protocol::REPORT_SLEEP_BYTE] & protocol::REPORT_SLEEP_MASK) != 0;
 }
@@ -947,6 +956,17 @@ void SinclairACCNT::on_plasma_change(bool plasma)
 
     this->update_ = ACUpdate::UpdateStart;
     this->plasma_state_ = plasma;
+}
+
+void SinclairACCNT::on_beeper_change(bool beeper)
+{
+    if (this->state_ != ACState::Ready)
+        return;
+
+    ESP_LOGD(TAG, "Setting beeper");
+
+    this->update_ = ACUpdate::UpdateStart;
+    this->beeper_state_ = beeper;
 }
 
 void SinclairACCNT::on_sleep_change(bool sleep)
