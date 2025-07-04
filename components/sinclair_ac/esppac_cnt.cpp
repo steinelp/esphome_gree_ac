@@ -256,20 +256,13 @@ void SinclairACCNT::send_packet()
         fanQuiet  = true;
         fanTurbo  = false;
     }
-    else if (this->custom_fan_mode == fan_modes::FAN_MEDL)
-    {
-        fanSpeed1 = 2;
-        fanSpeed2 = 2;
-        fanQuiet  = false;
-        fanTurbo  = false;
-        packet[protocol::REPORT_FAN_SPD2_BYTE] |= 2;
-    }
     else if (this->custom_fan_mode == fan_modes::FAN_MED)
     {
         fanSpeed1 = 3;
         fanSpeed2 = 2;
         fanQuiet  = false;
         fanTurbo  = false;
+        packet[protocol::REPORT_FAN_SPD2_BYTE] |= 2;
     }
     else if (this->custom_fan_mode == fan_modes::FAN_MEDH)
     {
