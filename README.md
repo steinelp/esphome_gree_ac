@@ -3,10 +3,10 @@ This repository adds support for ESP32-based WiFi modules to interface with Gree
 It's forked from https://github.com/piotrva/esphome_gree_ac, big thanks to @piotrva for his work!
 This is just a small adaptation to fix the fan mode. It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
-** Current problems (to fix) commands sometimes are rejected and you need to resend. 
+# Current problems (to fix): 
+Commands sometimes are rejected and you need to resend. 
 
-** HOW TO ** 
-
+# HOW TO 
 You can flash this to an ESP module. I used an ESP01-M module, like this one:
 https://nl.aliexpress.com/item/1005008528226032.html
 So that’s both an ESP01 and the ‘adaptor’ board for 3.3V ↔ 5V conversion (since the ESP01 uses 3.3V and the AC uses 5V)
