@@ -508,6 +508,9 @@ void SinclairACCNT::send_packet()
     packet.insert(packet.begin(), protocol::SYNC);
 
     this->last_packet_sent_ = millis();  /* Save the time when we sent the last packet */
+
+    ESP_LOGV(TAG, "Stamp: %lx", this->last_packet_sent_);
+    
     this->wait_response_ = true;
     write_array(packet);                 /* Sent the packet by UART */
     log_packet(packet, true);            /* Log uart for debug purposes */
