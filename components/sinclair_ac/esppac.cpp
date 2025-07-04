@@ -193,6 +193,16 @@ void SinclairAC::update_plasma(bool plasma)
     }
 }
 
+void SinclairAC::update_beeper(bool beeper)
+{
+    this->beeper_state_ = beeper;
+
+    if (this->beeper_switch_ != nullptr)
+    {
+        this->beeper_switch_->publish_state(this->beeper_state_);
+    }
+}
+
 void SinclairAC::update_sleep(bool sleep)
 {
     this->sleep_state_ = sleep;
@@ -303,6 +313,16 @@ void SinclairAC::set_plasma_switch(switch_::Switch *plasma_switch)
         if (state == this->plasma_state_)
             return;
         this->on_plasma_change(state);
+    });
+}
+
+void SinclairAC::set_beeper_switch(switch_::Switch *beeper_switch)
+{
+    this->beeper_switch_ = beeper_switch;
+    this->beeper_switch_->add_on_state_callback([this](bool state) {
+        if (state == this->beeper_state_)
+            return;
+        this->on_beeper_change(state);
     });
 }
 
