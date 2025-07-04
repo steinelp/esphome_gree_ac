@@ -122,6 +122,8 @@ namespace protocol {
     static const uint8_t REPORT_SAVE_BYTE      = 11;
     static const uint8_t REPORT_SAVE_MASK      = 0b01000000;
 
+    static const uint8_t REPORT_BEEPER_BYTE    = 40;
+
     /* SET packet shares all the byte definition with REPORT */
     static const uint8_t SET_PACKET_LEN        = 45;
     
