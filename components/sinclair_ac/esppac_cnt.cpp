@@ -483,6 +483,8 @@ void SinclairACCNT::send_packet()
     {
         packet[protocol::REPORT_SAVE_BYTE] |= protocol::REPORT_SAVE_MASK;
     }
+
+    packet[protocol::REPORT_BEEPER_BYTE] |= 1;
     
     /* Do the command, length */
     packet.insert(packet.begin(), protocol::CMD_OUT_PARAMS_SET);
