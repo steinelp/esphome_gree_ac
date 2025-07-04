@@ -467,7 +467,7 @@ void SinclairACCNT::send_packet()
     }
 
     /* BEEPER --------------------------------------------------------------------------- */
-    if (this->beeper_state_)
+    if (!this->beeper_state_)
     {
         packet[protocol::REPORT_BEEPER_BYTE] |= protocol::REPORT_BEEPER_MASK;
     }
