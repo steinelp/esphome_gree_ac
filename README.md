@@ -5,7 +5,8 @@ This is just a small adaptation to fix the fan mode and I've implemented a silen
 It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
 # Current problems (to fix): 
-Commands sometimes are rejected and you need to resend. 
+Commands sometimes are rejected and you need to resend. I think this is because currently no control
+command (0x3) packets are being sent. Will try to fix that when I have more time.
 
 # HOW TO 
 You can flash this to an ESP module. I used an ESP01-M module, like this one:
