@@ -75,7 +75,7 @@ void SinclairACCNT::control(const climate::ClimateCall &call)
     if (call.get_mode().has_value())
     {
         ESP_LOGV(TAG, "Requested mode change");
-        lastpacket[4] = 0xFF;
+        reqmodechange = true;
         this->update_ = ACUpdate::UpdateStart;
         this->mode = *call.get_mode();
     }
