@@ -655,7 +655,7 @@ void SinclairACCNT::handle_packet()
         this->serialProcess_.data.pop_back();  /* remove checksum */
         /* now process the data */
         this->processUnitReport();
-        this->publish_state();
+       // this->publish_state();
     }
     else 
     {
