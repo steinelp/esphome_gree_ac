@@ -666,7 +666,7 @@ void SinclairACCNT::handle_packet()
             ESP_LOGD(TAG, "New packet !");
             lastpacket = serialProcess_.data;
         }
-*/
+
        // this->publish_state();
     }
     else 
