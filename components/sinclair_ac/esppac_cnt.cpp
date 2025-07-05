@@ -75,6 +75,7 @@ void SinclairACCNT::control(const climate::ClimateCall &call)
     if (call.get_mode().has_value())
     {
         ESP_LOGV(TAG, "Requested mode change");
+        lastpacket[4] = 0xFF;
         this->update_ = ACUpdate::UpdateStart;
         this->mode = *call.get_mode();
     }
@@ -494,7 +495,7 @@ void SinclairACCNT::send_packet()
 
     for (int i = 0; i < 20; i++)
          lastpacket[i] = packet[i];
-    
+    ESP_LOGV(TAG, "Sending new packet now");
     packet.insert(packet.begin(), protocol::CMD_OUT_PARAMS_SET);
     packet.insert(packet.begin(), protocol::SET_PACKET_LEN + 2); /* Add 2 bytes as we added a command and will add checksum */
 
