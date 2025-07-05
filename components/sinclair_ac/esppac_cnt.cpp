@@ -154,6 +154,13 @@ void SinclairACCNT::send_packet()
     {
         this->last_03packet_sent_ = millis();
         ESP_LOGV(TAG, "Should send 0x3 cmd pakket now: %lx", this->last_packet_sent_);
+
+      auto time = id(my_time).now();
+      if (time.is_valid()) {
+        ESP_LOGD("time", "Hour: %02d, Minute: %02d, Second: %02d", 
+                 time.hour, time.minute, time.second);
+      } else {
+        ESP_LOGW("time", "Time not yet synchronized");
     }
     
     packet[protocol::SET_CONST_02_BYTE] = protocol::SET_CONST_02_VAL; /* Some always 0x02 byte... */
