@@ -167,6 +167,16 @@ class SinclairACCNT : public SinclairAC {
         void on_xfan_change(bool xfan) override;
         void on_save_change(bool save) override;
 
+  /// Get the time in the currently defined timezone.
+  ESPTime now() { return ESPTime::from_epoch_local(this->timestamp_now()); }
+
+  /// Get the time without any time zone or DST corrections.
+  ESPTime utcnow() { return ESPTime::from_epoch_utc(this->timestamp_now()); }
+
+  /// Get the current time as the UTC epoch since January 1st 1970.
+  time_t timestamp_now() { return ::time(nullptr); }
+
+
         void setup() override;
         void loop() override;
 
