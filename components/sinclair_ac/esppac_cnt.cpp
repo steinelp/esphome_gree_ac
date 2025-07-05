@@ -9,10 +9,7 @@ static const char *const TAG = "sinclair_ac.serial";
 
 void SinclairACCNT::setup()
 {
-    this->last_03packet_sent_ = millis();
-   // std::vector<uint8_t> lastpacket(60, 0);  /* Initialize packet contents */
     SinclairAC::setup();
-
     ESP_LOGD(TAG, "Using serial protocol for Sinclair AC");
 }
 
