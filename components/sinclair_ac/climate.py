@@ -116,6 +116,8 @@ async def to_code(config):
     await cg.register_component(var, config)
     await uart.register_uart_device(var, config)
 
+    _LOGGER.error('JAAAAAAAAAAAAAAAAAAAAAAAe!')
+
     if CONF_HORIZONTAL_SWING_SELECT in config:
         conf = config[CONF_HORIZONTAL_SWING_SELECT]
         hswing_select = await select.new_select(conf, options=HORIZONTAL_SWING_OPTIONS)
