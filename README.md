@@ -4,9 +4,9 @@ It's forked from https://github.com/piotrva/esphome_gree_ac, big thanks to @piot
 
 My fork currently differs from the original code in the following ways:
 
-1) fix the fan mode
-2) Fix dropping of commands
-3) Fix rejecting of commands
+1) I fixed the fan mode, mine works now for Daizuki/TGM AC's.
+2) I fixed the dropping of commands
+3) I fixed the rejection of commands
 4) I implemented a silent mode (no beeping).
    
 It's now compatible with GRJWB04-J / Cs532ae wifi modules
