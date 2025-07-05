@@ -148,6 +148,12 @@ void SinclairACCNT::send_packet()
         /* do net send packet too often or when we are waiting for report to come */
         return;
     }
+
+    if (millis() - this->last_03packet_sent_) >= protocol::TIME_REFRESH_03PERIOD_MS )
+    {
+        this->last_03packet_sent_ = millis();
+        ESP_LOGV(TAG, "Should send 0x3 cmd pakket now: %lx", this->last_packet_sent_);
+    }
     
     packet[protocol::SET_CONST_02_BYTE] = protocol::SET_CONST_02_VAL; /* Some always 0x02 byte... */
     packet[protocol::SET_CONST_BIT_BYTE] = protocol::SET_CONST_BIT_MASK; /* Some always true bit */
