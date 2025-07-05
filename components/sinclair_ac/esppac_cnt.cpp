@@ -657,9 +657,10 @@ void SinclairACCNT::handle_packet()
         /* now process the data */
         this->processUnitReport();
 
-     /*   int i = 0;
-        while ((i < 52) && (this->serialProcess_.data[i] != lastpacket[i]))
+        int i = 0;
+        while ((i < 20) && (this->serialProcess_.data[i] == lastpacket[i]))
             i++;
+        /*
         if (i < 52)
         {
             ESP_LOGD(TAG, "New packet !");
