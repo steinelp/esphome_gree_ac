@@ -609,9 +609,10 @@ void SinclairACCNT::handle_packet()
         this->processUnitReport();
 
         //Only send new data to HA if we did not initiate that ourselves!
-        if (newdata)
+        if (newdata || reqmodechange)
         {
             ESP_LOGD(TAG, "New packet !");
+            reqmodechange = false;
             this->publish_state();
         }
 
