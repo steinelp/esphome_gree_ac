@@ -1,5 +1,4 @@
 // based on: https://github.com/DomiStyle/esphome-panasonic-ac
-//test
 #include "esppac.h"
 
 #include "esphome/core/log.h"
