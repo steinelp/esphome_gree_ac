@@ -651,7 +651,7 @@ void SinclairACCNT::handle_packet()
 {
     if (this->serialProcess_.data[3] == protocol::CMD_IN_UNIT_REPORT)
     {
-        bool newdata false;
+        bool newdata = false;
         int i = 0;
         while ((i < 20) && (this->serialProcess_.data[i] == lastpacket[i]))
             i++;
