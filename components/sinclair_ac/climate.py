@@ -31,6 +31,7 @@ CONF_DISPLAY_SELECT             = "display_select"
 CONF_DISPLAY_UNIT_SELECT        = "display_unit_select"
 
 CONF_PLASMA_SWITCH              = "plasma_switch"
+CONF_BEEPER_SWITCH              = "beeper_switch"
 CONF_SLEEP_SWITCH               = "sleep_switch"
 CONF_XFAN_SWITCH                = "xfan_switch"
 CONF_SAVE_SWITCH                = "save_switch"
@@ -90,6 +91,7 @@ SCHEMA = climate.CLIMATE_SCHEMA.extend(
         cv.Optional(CONF_DISPLAY_SELECT): SELECT_SCHEMA,
         cv.Optional(CONF_DISPLAY_UNIT_SELECT): SELECT_SCHEMA,
         cv.Optional(CONF_PLASMA_SWITCH): SWITCH_SCHEMA,
+        cv.Optional(CONF_BEEPER_SWITCH): SWITCH_SCHEMA,
         cv.Optional(CONF_SLEEP_SWITCH): SWITCH_SCHEMA,
         cv.Optional(CONF_XFAN_SWITCH): SWITCH_SCHEMA,
         cv.Optional(CONF_SAVE_SWITCH): SWITCH_SCHEMA,
@@ -141,7 +143,7 @@ async def to_code(config):
         cg.add(var.set_current_temperature_sensor(sens))
         _LOGGER.error('Temp change!')
         
-    for s in [CONF_PLASMA_SWITCH, CONF_SLEEP_SWITCH, CONF_XFAN_SWITCH, CONF_SAVE_SWITCH]:
+    for s in [CONF_PLASMA_SWITCH, CONF_BEEPER_SWITCH, CONF_SLEEP_SWITCH, CONF_XFAN_SWITCH, CONF_SAVE_SWITCH]:
         if s in config:
             conf = config[s]
             a_switch = cg.new_Pvariable(conf[CONF_ID])
