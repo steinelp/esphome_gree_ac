@@ -4,9 +4,8 @@ It's forked from https://github.com/piotrva/esphome_gree_ac, big thanks to @piot
 This is just a small adaptation to fix the fan mode and I've implemented a silent mode (no beeping).
 It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
-# Current problems (to fix): 
-Commands sometimes are rejected and you need to resend. I think this is because currently no control
-command (0x3) packets are being sent. Will try to fix that when I have more time. Other than that everything seems to work fine.
+# Current states:
+No known problems! if you run into an issue though, please let me know.
 
 # HOW TO 
 You can flash this to an ESP module. I used an ESP01-M module, like this one:
