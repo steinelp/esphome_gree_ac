@@ -160,8 +160,8 @@ void SinclairACCNT::send_packet()
         ESP_LOGD(TAG, "Synchronized time: %04d-%02d-%02d %02d:%02d:%02d", time.year, time.month, time.day_of_month, time.hour,
            time.minute, time.second);
    
-    
-        packet03[protocol::REPORT_SUBTYPE_BYTE] = 7;
+         packet03[protocol::REPORT_SUBTYPE_BYTE] = 7;
+        packet03[protocol::REPORT_CMD3NEEDS1_BYTE] = 1;
 
         packet03[protocol::REPORT_YEAR_BYTE] = 0x7e;
         packet03[protocol::REPORT_MONTH_BYTE] = 0x97;
@@ -171,7 +171,6 @@ void SinclairACCNT::send_packet()
         packet03[protocol::REPORT_MINUTE_BYTE] = time.minute;
         packet03[protocol::REPORT_SEC_BYTE] = time.second;
 
-
         packet03.insert(packet03.begin(), protocol::CMD_OUT_SYNC_TIME);
         packet03.insert(packet03.begin(), protocol::SET_PACKET03_LEN + 2); 
         
@@ -180,10 +179,8 @@ void SinclairACCNT::send_packet()
         {
             checksum += packet03[i];
         }
-
   
         packet03.push_back(checksum);
-
         packet03.insert(packet03.begin(), protocol::SYNC);
         packet03.insert(packet03.begin(), protocol::SYNC);
 
