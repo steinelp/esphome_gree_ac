@@ -180,7 +180,8 @@ class SinclairACCNT : public SinclairAC {
         bool processUnitReport();
 
         void send_packet();
-        //std::vector<uint8_t> lastpacket;
+
+        bool reqmodechange = false;
         unsigned char lastpacket[60];
 
         bool verify_packet();
