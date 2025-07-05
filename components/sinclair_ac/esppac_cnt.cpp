@@ -181,24 +181,39 @@ void SinclairACCNT::send_packet()
             checksum += packet03[i];
         }
 
-    /*
-    packet03.push_back(checksum);
+  
+        packet03.push_back(checksum);
 
-    packet03.insert(packet.begin(), protocol::SYNC);
-    packet03.insert(packet.begin(), protocol::SYNC);
+        packet03.insert(packet.begin(), protocol::SYNC);
+        packet03.insert(packet.begin(), protocol::SYNC);
 
-    ESP_LOGV(TAG, "Stamp1: %lx", this->last_packet_sent_);
-    this->last_packet_sent_ = millis(); 
-    ESP_LOGV(TAG, "Stamp2: %lx", this->last_packet_sent_);
+        ESP_LOGV(TAG, "Stamp1: %lx", this->last_packet_sent_);
+        this->last_packet_sent_ = millis(); 
+        ESP_LOGV(TAG, "Stamp2: %lx", this->last_packet_sent_);
     
-    this->wait_response_ = true;
-    write_array(packet03);                
-    log_packet(packet03, true);            
-        */
+        this->wait_response_ = true;
+        write_array(packet03);                
+        log_packet(packet03, true);       
+
+            /* update setting state-machine */
+    switch(this->update_)
+    {
+        case ACUpdate::NoUpdate:
+            break;
+        case ACUpdate::UpdateStart:
+            this->update_ = ACUpdate::UpdateClear;
+            break;
+        case ACUpdate::UpdateClear:
+            this->update_ = ACUpdate::NoUpdate;
+            break;
+        default:
+            this->update_ = ACUpdate::NoUpdate;
+            break;
+    }
+        return;
 
     }
-//else
-//{
+
     
     packet[protocol::SET_CONST_02_BYTE] = protocol::SET_CONST_02_VAL; /* Some always 0x02 byte... */
     packet[protocol::SET_CONST_BIT_BYTE] = protocol::SET_CONST_BIT_MASK; /* Some always true bit */
@@ -565,7 +580,7 @@ void SinclairACCNT::send_packet()
     this->wait_response_ = true;
     write_array(packet);                 /* Sent the packet by UART */
     log_packet(packet, true);            /* Log uart for debug purposes */
-   // }
+   
 
     
     /* update setting state-machine */
