@@ -153,7 +153,7 @@ void SinclairACCNT::send_packet()
 
     if (millis() - this->last_03packet_sent_ >= protocol::TIME_REFRESH_03PERIOD_MS )
     {
-        this->last_03packet_sent_ = millis();
+       this->last_03packet_sent_ = millis();
         ESP_LOGV(TAG, "Sending cmd pakket now: %lx", this->last_packet_sent_);
 
         auto time = this->now();
@@ -170,7 +170,7 @@ void SinclairACCNT::send_packet()
         packet03[protocol::REPORT_MINUTE_BYTE] = time.minute;
         packet03[protocol::REPORT_SEC_BYTE] = time.second;
 
-        /* Do the command, length */
+
         packet03.insert(packet03.begin(), protocol::CMD_OUT_SYNC_TIME);
         packet03.insert(packet03.begin(), protocol::SET_PACKET03_LEN + 2); /* Add 2 bytes as we added a command and will add checksum */
         
@@ -181,13 +181,12 @@ void SinclairACCNT::send_packet()
     }
     packet03.push_back(checksum);
 
-    /* Do SYNC bytes */
     packet03.insert(packet.begin(), protocol::SYNC);
     packet03.insert(packet.begin(), protocol::SYNC);
 
-    //ESP_LOGV(TAG, "Stamp1: %lx", this->last_packet_sent_);
-    //this->last_packet_sent_ = millis();  /* Save the time when we sent the last packet */
-    //ESP_LOGV(TAG, "Stamp2: %lx", this->last_packet_sent_);
+    ESP_LOGV(TAG, "Stamp1: %lx", this->last_packet_sent_);
+    this->last_packet_sent_ = millis();  /* Save the time when we sent the last packet */
+    ESP_LOGV(TAG, "Stamp2: %lx", this->last_packet_sent_);
     
     this->wait_response_ = true;
     write_array(packet03);                 /* Sent the packet by UART */
