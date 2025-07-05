@@ -600,7 +600,7 @@ void SinclairACCNT::handle_packet()
         this->serialProcess_.data.erase(this->serialProcess_.data.begin(), this->serialProcess_.data.begin() + 4); /* remove header */
         this->serialProcess_.data.pop_back();  /* remove checksum */
 
-             for (int i = 4; i < 20; i++)
+             for (int i = 4; i < 11; i++)
              {
                 ESP_LOGV(TAG, "Stamp1: %lx", lastpacket[i]);
                 ESP_LOGV(TAG, "Stamp1: %lx", this->serialProcess_.data[i]);
