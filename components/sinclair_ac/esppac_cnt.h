@@ -145,7 +145,7 @@ namespace protocol {
    static const uint8_t REPORT_SUBTYPE_BYTE  = 0;
     static const uint8_t REPORT_YEAR_BYTE  = 11;
     static const uint8_t REPORT_MONTH_BYTE  = 12;
-    static const uint8_t REPORT_MONTH_BYTE  = 13;
+    static const uint8_t REPORT_DAY_BYTE  = 13;
     static const uint8_t REPORT_HOUR_BYTE  = 14;
     static const uint8_t REPORT_MINUTE_BYTE  = 15;
     static const uint8_t REPORT_SEC_BYTE  = 16;
