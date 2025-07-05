@@ -154,7 +154,7 @@ void SinclairACCNT::send_packet()
     {
         this->last_03packet_sent_ = millis();
         ESP_LOGV(TAG, "Should send 0x3 cmd pakket now: %lx", this->last_packet_sent_);
-        auto time = this->now();
+       
 
     }
     
