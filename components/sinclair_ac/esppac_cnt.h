@@ -1,7 +1,7 @@
 // based on: https://github.com/DomiStyle/esphome-panasonic-ac
 #include "esphome/components/climate/climate.h"
 #include "esphome/components/climate/climate_mode.h"
-#include "ESP32Time.h"
+#include "esphome/core/time.h"
 #include "esppac.h"
 
 namespace esphome {
