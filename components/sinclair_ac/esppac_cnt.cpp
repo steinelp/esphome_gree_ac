@@ -149,7 +149,7 @@ void SinclairACCNT::send_packet()
         return;
     }
 
-    if (millis() - this->last_03packet_sent_) >= protocol::TIME_REFRESH_03PERIOD_MS )
+    if (millis() - this->last_03packet_sent_ >= protocol::TIME_REFRESH_03PERIOD_MS )
     {
         this->last_03packet_sent_ = millis();
         ESP_LOGV(TAG, "Should send 0x3 cmd pakket now: %lx", this->last_packet_sent_);
