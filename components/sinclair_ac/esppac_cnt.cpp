@@ -144,74 +144,12 @@ void SinclairACCNT::control(const climate::ClimateCall &call)
 void SinclairACCNT::send_packet()
 {
     std::vector<uint8_t> packet(protocol::SET_PACKET_LEN, 0);  /* Initialize packet contents */
-    std::vector<uint8_t> packet03(protocol::SET_PACKET03_LEN, 0);  /* Initialize packet contents */
 
     if (this->wait_response_ == true || (millis() - this->last_packet_sent_ < protocol::TIME_REFRESH_PERIOD_MS))
     {
         /* do net send packet too often or when we are waiting for report to come */
         return;
     }
-
-    if (millis() - this->last_03packet_sent_ >= protocol::TIME_REFRESH_03PERIOD_MS )
-    {
-       this->last_03packet_sent_ = millis();
-       // ESP_LOGV(TAG, "Sending cmd pakket now: %lx", this->last_packet_sent_);
-
-        auto time = this->now();
-        ESP_LOGD(TAG, "Synchronized time: %04d-%02d-%02d %02d:%02d:%02d", time.year, time.month, time.day_of_month, time.hour,
-           time.minute, time.second);
-   
-         packet03[protocol::REPORT_SUBTYPE_BYTE] = 7;
-        packet03[protocol::REPORT_CMD3NEEDS1_BYTE] = 1;
-
-        packet03[protocol::REPORT_YEAR_BYTE] = 0x7e;
-        packet03[protocol::REPORT_MONTH_BYTE] = 0x97;
-        packet03[protocol::REPORT_DAY_BYTE] = 0x04;
-        
-        packet03[protocol::REPORT_HOUR_BYTE] = time.hour;
-        packet03[protocol::REPORT_MINUTE_BYTE] = time.minute;
-        packet03[protocol::REPORT_SEC_BYTE] = time.second;
-
-        packet03.insert(packet03.begin(), protocol::CMD_OUT_SYNC_TIME);
-        packet03.insert(packet03.begin(), protocol::SET_PACKET03_LEN + 2); 
-        
-        uint8_t checksum = 0;
-        for (uint8_t i = 0 ; i < packet03.size() ; i++)
-        {
-            checksum += packet03[i];
-        }
-  
-        packet03.push_back(checksum);
-        packet03.insert(packet03.begin(), protocol::SYNC);
-        packet03.insert(packet03.begin(), protocol::SYNC);
-
-        ESP_LOGV(TAG, "Stamp1: %lx", this->last_packet_sent_);
-        this->last_packet_sent_ = millis(); 
-        ESP_LOGV(TAG, "Stamp2: %lx", this->last_packet_sent_);
-    
-        this->wait_response_ = true;
-        write_array(packet03);                
-        log_packet(packet03, true);       
-
-            /* update setting state-machine */
-    switch(this->update_)
-    {
-        case ACUpdate::NoUpdate:
-            break;
-        case ACUpdate::UpdateStart:
-            this->update_ = ACUpdate::UpdateClear;
-            break;
-        case ACUpdate::UpdateClear:
-            this->update_ = ACUpdate::NoUpdate;
-            break;
-        default:
-            this->update_ = ACUpdate::NoUpdate;
-            break;
-    }
-        return;
-
-    }
-
     
     packet[protocol::SET_CONST_02_BYTE] = protocol::SET_CONST_02_VAL; /* Some always 0x02 byte... */
     packet[protocol::SET_CONST_BIT_BYTE] = protocol::SET_CONST_BIT_MASK; /* Some always true bit */
@@ -555,6 +493,11 @@ void SinclairACCNT::send_packet()
     }
 
     /* Do the command, length */
+
+
+    for (int i = 0; i < 10; i++)
+         lastpacket[i] = packet.data[i];
+    
     packet.insert(packet.begin(), protocol::CMD_OUT_PARAMS_SET);
     packet.insert(packet.begin(), protocol::SET_PACKET_LEN + 2); /* Add 2 bytes as we added a command and will add checksum */
 
