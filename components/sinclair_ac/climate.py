@@ -1,5 +1,4 @@
 #based on: https://github.com/DomiStyle/esphome-panasonic-ac
-import logging
 from esphome.const import (
     CONF_ID,
 )
@@ -9,8 +8,6 @@ from esphome.components import uart, climate, sensor, select, switch
 
 AUTO_LOAD = ["switch", "sensor", "select"]
 DEPENDENCIES = ["uart"]
-
-_LOGGER = logging.getLogger(__name__)
 
 sinclair_ac_ns = cg.esphome_ns.namespace("sinclair_ac")
 SinclairAC = sinclair_ac_ns.class_(
@@ -115,9 +112,7 @@ async def to_code(config):
     await climate.register_climate(var, config)
     await cg.register_component(var, config)
     await uart.register_uart_device(var, config)
-
-    _LOGGER.error('JAAAAAAAAAAAAAAAAAAAAAAAe!')
-
+    
     if CONF_HORIZONTAL_SWING_SELECT in config:
         conf = config[CONF_HORIZONTAL_SWING_SELECT]
         hswing_select = await select.new_select(conf, options=HORIZONTAL_SWING_OPTIONS)
@@ -145,7 +140,6 @@ async def to_code(config):
     if CONF_CURRENT_TEMPERATURE_SENSOR in config:
         sens = await cg.get_variable(config[CONF_CURRENT_TEMPERATURE_SENSOR])
         cg.add(var.set_current_temperature_sensor(sens))
-        _LOGGER.error('Temp change!')
         
     for s in [CONF_PLASMA_SWITCH, CONF_BEEPER_SWITCH, CONF_SLEEP_SWITCH, CONF_XFAN_SWITCH, CONF_SAVE_SWITCH]:
         if s in config:
