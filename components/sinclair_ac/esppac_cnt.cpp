@@ -664,7 +664,8 @@ void SinclairACCNT::handle_packet()
         if (i < 20)
         {
             ESP_LOGD(TAG, "New packet !");
-          //  lastpacket = serialProcess_.data;
+            for (int i = 0; i < 20; i++)
+                lastpacket[i] = serialProcess_.data[i];
         }
 
        // this->publish_state();
