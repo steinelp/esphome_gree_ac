@@ -142,6 +142,14 @@ namespace protocol {
     static const uint8_t SET_CONST_BIT_BYTE    = 7;
     static const uint8_t SET_CONST_BIT_MASK    = 0b00000010;
 
+   static const uint8_t REPORT_SUBTYPE_BYTE  = 0;
+    static const uint8_t REPORT_YEAR_BYTE  = 11;
+    static const uint8_t REPORT_MONTH_BYTE  = 12;
+    static const uint8_t REPORT_MONTH_BYTE  = 13;
+    static const uint8_t REPORT_HOUR_BYTE  = 14;
+    static const uint8_t REPORT_MINUTE_BYTE  = 15;
+    static const uint8_t REPORT_SEC_BYTE  = 16;
+
     /* time constraints */
     static const unsigned long TIME_REFRESH_PERIOD_MS   =  300;
     static const unsigned long TIME_REFRESH_03PERIOD_MS = 10000;
