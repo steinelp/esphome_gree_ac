@@ -142,6 +142,7 @@ namespace protocol {
 
     /* time constraints */
     static const unsigned long TIME_REFRESH_PERIOD_MS   =  300;
+    static const unsigned long TIME_REFRESH_03PERIOD_MS = 10000;
     static const unsigned long TIME_TIMEOUT_INACTIVE_MS = 1000;
 }
 
