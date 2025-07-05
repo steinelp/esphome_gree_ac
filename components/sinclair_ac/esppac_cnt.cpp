@@ -613,8 +613,15 @@ void SinclairACCNT::handle_packet()
         //Only send new data to HA if we did not initiate that ourselves!
         if (newdata || reqmodechange)
         {
+            if (reqmodechange)
+                ESP_LOGD(TAG, "reqmodechange true !");
+            else
+                ESP_LOGD(TAG, "reqmodechange false !");
+                
+                
             ESP_LOGD(TAG, "New packet !");
             reqmodechange = false;
+            
             this->publish_state();
         }
 
