@@ -153,16 +153,49 @@ void SinclairACCNT::send_packet()
     if (millis() - this->last_03packet_sent_ >= protocol::TIME_REFRESH_03PERIOD_MS )
     {
         this->last_03packet_sent_ = millis();
-        ESP_LOGV(TAG, "Should send 0x3 cmd pakket now: %lx", this->last_packet_sent_);
+        ESP_LOGV(TAG, "Sending cmd pakket now: %lx", this->last_packet_sent_);
 
         auto time = this->now();
         ESP_LOGD(TAG, "Synchronized time: %04d-%02d-%02d %02d:%02d:%02d", time.year, time.month, time.day_of_month, time.hour,
            time.minute, time.second);
 
+        packet03[protocol::REPORT_SUBTYPE_BYTE] = 7;
+
+        packet03[protocol::REPORT_YEAR_BYTE] = 0x7e;
+        packet03[protocol::REPORT_MONTH_BYTE] = 0x97;
+        packet03[protocol::REPORT_DAY_BYTE] = 0x04;
+        
         packet03[protocol::REPORT_HOUR_BYTE] = time.hour;
+        packet03[protocol::REPORT_MINUTE_BYTE] = time.minute;
+        packet03[protocol::REPORT_SEC_BYTE] = time.second;
+
+        /* Do the command, length */
+        packet03.insert(packet03.begin(), protocol::CMD_OUT_SYNC_TIME);
+        packet03.insert(packet03.begin(), protocol::SET_PACKET03_LEN + 2); /* Add 2 bytes as we added a command and will add checksum */
+        
+    uint8_t checksum = 0;
+    for (uint8_t i = 0 ; i < packet03.size() ; i++)
+    {
+        checksum += packet03[i];
+    }
+    packet03.push_back(checksum);
+
+    /* Do SYNC bytes */
+    packet03.insert(packet.begin(), protocol::SYNC);
+    packet03.insert(packet.begin(), protocol::SYNC);
+
+    //ESP_LOGV(TAG, "Stamp1: %lx", this->last_packet_sent_);
+    //this->last_packet_sent_ = millis();  /* Save the time when we sent the last packet */
+    //ESP_LOGV(TAG, "Stamp2: %lx", this->last_packet_sent_);
+    
+    this->wait_response_ = true;
+    write_array(packet03);                 /* Sent the packet by UART */
+    log_packet(packet03, true);            /* Log uart for debug purposes */
         
 
     }
+else
+{
     
     packet[protocol::SET_CONST_02_BYTE] = protocol::SET_CONST_02_VAL; /* Some always 0x02 byte... */
     packet[protocol::SET_CONST_BIT_BYTE] = protocol::SET_CONST_BIT_MASK; /* Some always true bit */
@@ -529,7 +562,9 @@ void SinclairACCNT::send_packet()
     this->wait_response_ = true;
     write_array(packet);                 /* Sent the packet by UART */
     log_packet(packet, true);            /* Log uart for debug purposes */
+    }
 
+    
     /* update setting state-machine */
     switch(this->update_)
     {
