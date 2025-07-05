@@ -10,6 +10,8 @@ from esphome.components import uart, climate, sensor, select, switch
 AUTO_LOAD = ["switch", "sensor", "select"]
 DEPENDENCIES = ["uart"]
 
+_LOGGER = logging.getLogger(__name__)
+
 sinclair_ac_ns = cg.esphome_ns.namespace("sinclair_ac")
 SinclairAC = sinclair_ac_ns.class_(
     "SinclairAC", cg.Component, uart.UARTDevice, climate.Climate
