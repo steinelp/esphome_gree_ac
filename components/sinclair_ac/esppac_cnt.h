@@ -127,7 +127,6 @@ namespace protocol {
 
     /* SET packet shares all the byte definition with REPORT */
     static const uint8_t SET_PACKET_LEN        = 45;
-    static const uint8_t SET_PACKET03_LEN      = 24;
     
     static const uint8_t SET_CONST_02_BYTE     = 39;
     static const uint8_t SET_CONST_02_VAL      = 0x02;
@@ -165,16 +164,6 @@ class SinclairACCNT : public SinclairAC {
         void on_xfan_change(bool xfan) override;
         void on_save_change(bool save) override;
 
-  /// Get the time in the currently defined timezone.
-  ESPTime now() { return ESPTime::from_epoch_local(this->timestamp_now()); }
-
-  /// Get the time without any time zone or DST corrections.
-  ESPTime utcnow() { return ESPTime::from_epoch_utc(this->timestamp_now()); }
-
-  /// Get the current time as the UTC epoch since January 1st 1970.
-  time_t timestamp_now() { return ::time(nullptr); }
-
-
         void setup() override;
         void loop() override;
 
@@ -207,7 +196,6 @@ class SinclairACCNT : public SinclairAC {
         std::string determine_display_unit();
 
         bool determine_plasma();
-      //  bool determine_beeper();
         bool determine_sleep();
         bool determine_xfan();
         bool determine_save();
