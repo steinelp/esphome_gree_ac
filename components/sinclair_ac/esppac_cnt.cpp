@@ -496,7 +496,7 @@ void SinclairACCNT::send_packet()
 
 
     for (int i = 0; i < 10; i++)
-         lastpacket[i] = 0;
+         lastpacket[i] = packet[i];
     
     packet.insert(packet.begin(), protocol::CMD_OUT_PARAMS_SET);
     packet.insert(packet.begin(), protocol::SET_PACKET_LEN + 2); /* Add 2 bytes as we added a command and will add checksum */
