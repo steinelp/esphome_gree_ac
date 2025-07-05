@@ -614,7 +614,7 @@ void SinclairACCNT::handle_packet()
         if (newdata)
         {
             ESP_LOGD(TAG, "New packet !");
-          //  this->publish_state();
+            this->publish_state();
         }
 
     }
