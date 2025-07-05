@@ -604,7 +604,8 @@ void SinclairACCNT::handle_packet()
              {
                 ESP_LOGV(TAG, "Stamp1: %lx", lastpacket[i]);
                 ESP_LOGV(TAG, "Stamp1: %lx", this->serialProcess_.data[i]);
-              //  lastpacket[i] = serialProcess_.data[i];
+                 if (lastpacket[i] != this->serialProcess_.data[i])
+                     newdata = true;
              }
         
         /* now process the data */
