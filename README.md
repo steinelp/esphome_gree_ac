@@ -11,7 +11,7 @@ My fork currently differs from the original code in the following ways:
    
 It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
-# Current states:
+# Current state:
 No known problems! if you run into an issue though, please let me know.
 
 # HOW TO 
