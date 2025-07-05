@@ -127,6 +127,7 @@ namespace protocol {
 
     /* SET packet shares all the byte definition with REPORT */
     static const uint8_t SET_PACKET_LEN        = 45;
+    static const uint8_t SET_PACKET03_LEN      = 24;
     
     static const uint8_t SET_CONST_02_BYTE     = 39;
     static const uint8_t SET_CONST_02_VAL      = 0x02;
