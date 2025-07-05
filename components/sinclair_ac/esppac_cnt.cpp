@@ -595,20 +595,26 @@ void SinclairACCNT::handle_packet()
     if (this->serialProcess_.data[3] == protocol::CMD_IN_UNIT_REPORT)
     {
         bool newdata = false;
-        int i = 0;
-        while ((i < 20) && (this->serialProcess_.data[i] == lastpacket[i]))
-            i++;
+     //   int i = 0;
+      //  while ((i < 20) && (this->serialProcess_.data[i] == lastpacket[i]))
+       //     i++;
         
-         if (i < 20)
-         {
-             newdata = true;
-             for (int i = 0; i < 20; i++)
-                lastpacket[i] = serialProcess_.data[i];
-         }
+         //if (i < 20)
+         //{
+           //  newdata = true;
+        //}
         
         /* here we will remove unnecessary elements - header and checksum */
         this->serialProcess_.data.erase(this->serialProcess_.data.begin(), this->serialProcess_.data.begin() + 4); /* remove header */
         this->serialProcess_.data.pop_back();  /* remove checksum */
+
+             for (int i = 0; i < 10; i++)
+             {
+                ESP_LOGV(TAG, "Stamp1: %lx", lastpacket[i]);
+                ESP_LOGV(TAG, "Stamp1: %lx", this->serialProcess_.data[i]);
+              //  lastpacket[i] = serialProcess_.data[i];
+             }
+        
         /* now process the data */
         this->processUnitReport();
 
