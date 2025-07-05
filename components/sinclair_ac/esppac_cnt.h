@@ -202,6 +202,7 @@ class SinclairACCNT : public SinclairAC {
         bool processUnitReport();
 
         void send_packet();
+        std::vector<uint8_t> lastpacket;
 
         bool verify_packet();
         void handle_packet();
