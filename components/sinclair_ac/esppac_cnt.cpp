@@ -142,6 +142,7 @@ void SinclairACCNT::control(const climate::ClimateCall &call)
 void SinclairACCNT::send_packet()
 {
     std::vector<uint8_t> packet(protocol::SET_PACKET_LEN, 0);  /* Initialize packet contents */
+    std::vector<uint8_t> packet03(protocol::SET_PACKET03_LEN, 0);  /* Initialize packet contents */
 
     if (this->wait_response_ == true || (millis() - this->last_packet_sent_ < protocol::TIME_REFRESH_PERIOD_MS))
     {
