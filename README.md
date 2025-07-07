@@ -27,4 +27,6 @@ but I downloaded the compiled binary and flashed with: https://github.com/esphom
 
 See the 2 photos for wiring (for flashing and the wiring for connecting it to your AC).
 
+After you've connected the module to your AC, it should pop under settings/integrations/esphome as a 'new device'. If not, check if it started a WIFI access point, which it will do if it can't connect to your home wifi. You can then configure it from there (via 192.168.4.1)
+
 **USE AT YOUR OWN RISK!**
