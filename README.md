@@ -7,7 +7,7 @@ My fork currently differs from the original code in the following ways:
 1) I fixed the fan mode, tested on Gree/Daizuki/TGM AC's.
 2) I fixed the dropping of commands
 3) I fixed the rejection of commands
-4) I implemented a silent mode (no beeping).
+4) I implemented an optional silent mode (no beeping).
    
 It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
