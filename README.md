@@ -18,7 +18,7 @@ No known problems! if you run into an issue though, please let me know.
 # HOW TO 
 You can flash this to an ESP module. I used an ESP01-M module, like this one:
 https://nl.aliexpress.com/item/1005008528226032.html
-So that’s both an ESP01 and the ‘adaptor’ board for 3.3V ↔ 5V conversion (since the ESP01 uses 3.3V and the AC uses 5V).
+So that’s both an ESP01 and the ‘adapter’ board for 3.3V ↔ 5V conversion (since the ESP01 uses 3.3V and the AC uses 5V).
 
 
 Create a new project in the ESPbuilder from Home assistant and use my YAML (from the examples directory), copy or modify the info from the generated YAML to mine, where it says '[insert yours]'.
