@@ -28,6 +28,22 @@ void SinclairACCNT::setup()
     Temrec0[14] = 30;
     Temrec0[15] = 30.5555555556;
 
+    Temrec1[0] = 16.1111111111111;
+    Temrec1[1] = 17.2222222222222;
+    Temrec1[2] = 18.3333333333333;
+    Temrec1[3] = 19.4444444444444;
+    Temrec1[4] = 0; //Can'thappen
+    Temrec1[5] = 21.1111111111;
+    Temrec1[6] = 22.2222222222222;
+    Temrec1[7] = 23.3333333333;
+    Temrec1[8] = 24.4444444444;
+    Temrec1[9] = 0; //Can't happen
+    Temrec1[10] = 26.1111111111111; 
+    Temrec1[11] = 27.2222222222222;
+    Temrec1[12] = 28.3333333333;
+    Temrec1[13] = 29.4444444444;
+    Temrec1[14] = 0; //Can't happen
+    Temrec1[15] = 31.1111111111111;
         
 }
 
