@@ -139,6 +139,9 @@ class SinclairAC : public Component, public uart::UARTDevice, public climate::Cl
 
         SerialProcess_t serialProcess_;
 
+        float TemRec0 [16];
+        float TemRec1 [16];
+
         uint32_t init_time_;   // Stores the current time
         // uint32_t last_read_;   // Stores the time at which the last read was done
         uint32_t last_packet_sent_;  // Stores the time at which the last packet was sent
