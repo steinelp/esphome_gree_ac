@@ -695,7 +695,7 @@ bool SinclairACCNT::processUnitReport()
     int Temset = (this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS;
     bool Temrec = this->serialProcess_.data[protocol::REPORT_DISP_F_BYTE] & protocol::TEMREC_MASK;
 
-    float newTargetTemperature;
+    float newTargetTemperature = 0;
     
     if (Temset < 0 || Temset > 15)
           ESP_LOGW(TAG, "Invalid Temset reived !");
@@ -706,9 +706,14 @@ bool SinclairACCNT::processUnitReport()
         else
             newTargetTemperature = Temrec0[Temset];
     }
-          
-    if (this->target_temperature != newTargetTemperature) hasChanged = true;
-    this->update_target_temperature(newTargetTemperature);
+
+    if (newTargetTemperature == 0)
+        ESP_LOGW(TAG, "Something went wrong in the temp calcs !");
+    else
+    {
+        if (this->target_temperature != newTargetTemperature) hasChanged = true;
+        this->update_target_temperature(newTargetTemperature);
+    }
     
     /* if there is no external sensor mapped to represent current temperature we will get data from AC unit */
     if (this->current_temperature_sensor_ == nullptr)
