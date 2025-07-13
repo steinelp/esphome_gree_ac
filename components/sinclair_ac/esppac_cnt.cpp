@@ -658,21 +658,21 @@ bool SinclairACCNT::processUnitReport()
     //float newTargetTemperature = (float)(((this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS)
      //   + protocol::REPORT_TEMP_SET_OFF);
 
-    int Temset = (((this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS)
-        + protocol::REPORT_TEMP_SET_OFF);
-
+    int Temset = (this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS;
     bool Temrec = this->serialProcess_.data[protocol::REPORT_DISP_F_BYTE] & protocol::TEMREC_MASK;
+
+    float newTargetTemperature;
     
-    if (Temrec)
-    {
-        
-    }
+    if (Temset < 0 || Temset > 15)
+          ESP_LOGW(TAG, "Invalid Temset reived !");
     else
     {
-        
+        if (Temrec)
+            newTargetTemperature = Temrec1[Temset];
+        else
+            newTargetTemperature = Temrec0[Temset];
     }
-    
-    
+          
     if (this->target_temperature != newTargetTemperature) hasChanged = true;
     this->update_target_temperature(newTargetTemperature);
     
