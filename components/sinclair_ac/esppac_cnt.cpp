@@ -12,7 +12,7 @@ void SinclairACCNT::setup()
     SinclairAC::setup();
     ESP_LOGD(TAG, "Using serial protocol for Sinclair AC");
 }
-
+xxx
 void SinclairACCNT::loop()
 {
     /* this reads data from UART */
