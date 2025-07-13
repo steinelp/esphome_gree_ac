@@ -655,8 +655,24 @@ bool SinclairACCNT::processUnitReport()
     if (this->custom_fan_mode != newFanMode) hasChanged = true;
     this->custom_fan_mode = newFanMode;
     
-    float newTargetTemperature = (float)(((this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS)
+    //float newTargetTemperature = (float)(((this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS)
+     //   + protocol::REPORT_TEMP_SET_OFF);
+
+    int Temset = (((this->serialProcess_.data[protocol::REPORT_TEMP_SET_BYTE] & protocol::REPORT_TEMP_SET_MASK) >> protocol::REPORT_TEMP_SET_POS)
         + protocol::REPORT_TEMP_SET_OFF);
+
+    bool Temrec = this->serialProcess_.data[protocol::REPORT_DISP_F_BYTE] & protocol::TEMREC_MASK;
+    
+    if (Temrec)
+    {
+        
+    }
+    else
+    {
+        
+    }
+    
+    
     if (this->target_temperature != newTargetTemperature) hasChanged = true;
     this->update_target_temperature(newTargetTemperature);
     
