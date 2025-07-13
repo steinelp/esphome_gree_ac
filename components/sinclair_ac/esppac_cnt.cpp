@@ -11,7 +11,7 @@ void SinclairACCNT::setup()
 {
     SinclairAC::setup();
     ESP_LOGD(TAG, "Using serial protocol for Sinclair AC");
-    Temrec0[0] = 0; //Can't happen
+    Temrec0[0] = 15.5555555555556;
     Temrec0[1] = 16.6666666666667;
     Temrec0[2] = 17.7777777778;
     Temrec0[3] = 18.8888888889;
