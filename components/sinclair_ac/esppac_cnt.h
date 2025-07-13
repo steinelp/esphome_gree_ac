@@ -106,6 +106,7 @@ namespace protocol {
     static const uint8_t REPORT_DISP_MODE_OUT      = 3;
 
     static const uint8_t REPORT_DISP_F_BYTE    = 7;
+    static const uint8_t TEMREC_MASK           = 0b01000000;
     static const uint8_t REPORT_DISP_F_MASK    = 0b10000000;
 
     static const uint8_t REPORT_PLASMA1_BYTE   = 6;
