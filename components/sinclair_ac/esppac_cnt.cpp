@@ -12,21 +12,21 @@ void SinclairACCNT::setup()
     SinclairAC::setup();
     ESP_LOGD(TAG, "Using serial protocol for Sinclair AC");
     Temrec0[0] = 0; //Can't happen
-    Temrec0[1] = 
-    Temrec0[2] =
-    Temrec0[3] = 
-    Temrec0[4] = 
-    Temrec0[5] = 
-    Temrec0[6] =
-    Temrec0[7] = 
-    Temrec0[8] = 
-    Temrec0[9] = 
-    Temrec0[10] =
-    Temrec0[11] = 
-    Temrec0[12] = 
-    Temrec0[13] = 
-    Temrec0[14] =
-    Temrec0[15] = 
+    Temrec0[1] = 16.6666666666667;
+    Temrec0[2] = 17.7777777778;
+    Temrec0[3] = 18.8888888889;
+    Temrec0[4] = 20;
+    Temrec0[5] = 20.5555555556;
+    Temrec0[6] = 21.6666666667;
+    Temrec0[7] = 22.7777777778;
+    Temrec0[8] = 23.8888888889;
+    Temrec0[9] = 25;
+    Temrec0[10] =25.5555555556;
+    Temrec0[11] = 26.6666666667;
+    Temrec0[12] = 27.7777777778;
+    Temrec0[13] = 28.8888888889;
+    Temrec0[14] = 30;
+    Temrec0[15] = 30.5555555556;
 
         
 }
