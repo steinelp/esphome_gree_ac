@@ -264,7 +264,7 @@ void SinclairACCNT::send_packet()
     uint8_t target_temperature = ((temptemp - protocol::REPORT_TEMP_SET_OFF) << protocol::REPORT_TEMP_SET_POS);
     packet[protocol::REPORT_TEMP_SET_BYTE] |= (target_temperature & protocol::REPORT_TEMP_SET_MASK);
 
-    if (this->target_temperature - (float)temptemp) > 0
+    if (this->target_temperature - (float)temptemp > 0)
     {
          packet[protocol::REPORT_DISP_F_BYTE] |= TEMREC_MASK;
     }
