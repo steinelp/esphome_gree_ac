@@ -266,7 +266,7 @@ void SinclairACCNT::send_packet()
 
     if (this->target_temperature - (float)temptemp > 0)
     {
-         packet[protocol::REPORT_DISP_F_BYTE] |= TEMREC_MASK;
+         packet[protocol::REPORT_DISP_F_BYTE] |= protocol::TEMREC_MASK;
     }
 
     /* FAN SPEED --------------------------------------------------------------------------- */
