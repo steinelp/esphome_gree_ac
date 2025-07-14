@@ -9,6 +9,7 @@ My fork currently differs from the original code in the following ways:
 3) I fixed the rejection of commands
 4) I implemented an optional silent mode (no beeping), only works for module sent commands (not for
    remote control sent commands)
+5) Implemented a fahrenheit mode (untested though, cant test until late august myself)   
    
 It's now compatible with GRJWB04-J / Cs532ae wifi modules
 
