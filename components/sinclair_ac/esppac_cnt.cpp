@@ -44,7 +44,6 @@ void SinclairACCNT::setup()
     Temrec1[13] = 29.4444444444;
     Temrec1[14] = 0; //Can't happen
     Temrec1[15] = 31.1111111111111;
-        
 }
 
 void SinclairACCNT::loop()
