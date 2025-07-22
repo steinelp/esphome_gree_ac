@@ -148,7 +148,7 @@ void SinclairACCNT::control(const climate::ClimateCall &call)
                 break;
             case climate::CLIMATE_SWING_OFF:
                 /* both center */
-                this->vertical_swing_state_   =   vertical_swing_options::CMID;
+                this->vertical_swing_state_   =   vertical_swing_options::CUP;
                 this->horizontal_swing_state_ = horizontal_swing_options::CMID;
                 break;
             case climate::CLIMATE_SWING_VERTICAL:
@@ -158,7 +158,7 @@ void SinclairACCNT::control(const climate::ClimateCall &call)
                 break;
             case climate::CLIMATE_SWING_HORIZONTAL:
                 /* horizontal full, vertical center */
-                this->vertical_swing_state_   =   vertical_swing_options::CMID;
+                this->vertical_swing_state_   =   vertical_swing_options::CUP;
                 this->horizontal_swing_state_ = horizontal_swing_options::FULL;
                 break;
             default:
