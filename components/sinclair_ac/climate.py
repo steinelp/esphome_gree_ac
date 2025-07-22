@@ -90,6 +90,7 @@ SCHEMA = climate.climate_schema(climate.Climate).extend(
         cv.Optional(CONF_DISPLAY_SELECT): select_schema,
         cv.Optional(CONF_DISPLAY_UNIT_SELECT): select_schema,
         cv.Optional(CONF_PLASMA_SWITCH): switch_schema,
+        cv.Optional(CONF_BEEPER_SWITCH): switch_schema,
         cv.Optional(CONF_SLEEP_SWITCH): switch_schema,
         cv.Optional(CONF_XFAN_SWITCH): switch_schema,
         cv.Optional(CONF_SAVE_SWITCH): switch_schema,
