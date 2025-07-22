@@ -76,12 +76,10 @@ DISPLAY_UNIT_OPTIONS = [
     "F",
 ]
 
-SWITCH_SCHEMA = switch.switch_schema(SinclairACSwitch, cv.COMPONENT_SCHEMA)
+SWITCH_SCHEMA = switch.switch_schema(SinclairACSwitch)
 SELECT_SCHEMA = select.select_schema(SinclairACSelect)
 
-SCHEMA = climate.climate_schema(
-    SinclairACCNT
-).extend(
+SCHEMA = climate.climate_schema(SinclairACCNT).extend(
     {
         cv.Optional(CONF_HORIZONTAL_SWING_SELECT): SELECT_SCHEMA,
         cv.Optional(CONF_VERTICAL_SWING_SELECT): SELECT_SCHEMA,
