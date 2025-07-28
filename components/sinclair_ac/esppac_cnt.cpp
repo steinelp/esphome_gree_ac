@@ -297,7 +297,7 @@ void SinclairACCNT::send_packet()
         fanQuiet  = true;
         fanTurbo  = false;
     } */
-    else if (this->fan_mode == climate::CLIMATE_FAN_MED)
+    else if (this->fan_mode == climate::CLIMATE_FAN_MEDIUM)
     {
         fanSpeed1 = 3;
         fanSpeed2 = 2;
@@ -313,7 +313,7 @@ void SinclairACCNT::send_packet()
         fanTurbo  = false;
         packet[protocol::REPORT_FAN_SPD2_BYTE] |= 3;
     }
-    else if (this->fan_mode == climate::CLIMATE_FAN_TURBO)
+    else if (this->fan_mode == climate::CLIMATE_FAN_FOCUS)
     {
         fanSpeed1 = 5;
         fanSpeed2 = 3;
@@ -816,13 +816,13 @@ std::string SinclairACCNT::determine_fan_mode()
     uint8_t fan_mode = (this->serialProcess_.data[protocol::REPORT_FAN_SPD2_BYTE] & protocol::REPORT_FAN_MODE_MASK);
 
     if (fanTurbo)
-        return climate::CLIMATE_FAN_TURBO;
+        return climate::CLIMATE_FAN_FOCUS;
     else if (fan_mode == 0)
         return climate::CLIMATE_FAN_AUTO;
     else if (fan_mode == 1)
         return climate::CLIMATE_FAN_LOW;
     else if (fan_mode == 2)
-        return climate::CLIMATE_FAN_MED;
+        return climate::CLIMATE_FAN_MEDIUM;
     else if (fan_mode == 3)
         return climate::CLIMATE_FAN_HIGH;
     else 
@@ -863,7 +863,7 @@ std::string SinclairACCNT::determine_fan_mode()
     }
     else if (fanSpeed1 == 5 && fanSpeed2 == 3 && fanQuiet == false && fanTurbo == true )
     {
-        return climate::CLIMATE_FAN_TURBO;
+        return climate::CLIMATE_FAN_FOCUS;
     }
     else 
     {
