@@ -33,10 +33,10 @@ climate::ClimateTraits SinclairAC::traits()
     traits.add_supported_fan_mode(climate::CLIMATE_FAN_FOCUS);
 
     // traits.set_supported_swing_modes({climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_VERTICAL, climate::CLIMATE_SWING_BOTH, climate::CLIMATE_SWING_HORIZONTAL});
-    traits.add_supported_swing_modes(climate::CLIMATE_SWING_OFF);
-    traits.add_supported_swing_modes(climate::CLIMATE_SWING_VERTICAL);
-    traits.add_supported_swing_modes(climate::CLIMATE_SWING_BOTH);
-    traits.add_supported_swing_modes(climate::CLIMATE_SWING_HORIZONTAL);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_OFF);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_VERTICAL);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_BOTH);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_HORIZONTAL);
 
     return traits;
 }
