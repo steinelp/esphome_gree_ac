@@ -23,17 +23,20 @@ climate::ClimateTraits SinclairAC::traits()
     traits.set_supported_modes({climate::CLIMATE_MODE_OFF, climate::CLIMATE_MODE_AUTO, climate::CLIMATE_MODE_COOL,
                                 climate::CLIMATE_MODE_HEAT, climate::CLIMATE_MODE_FAN_ONLY, climate::CLIMATE_MODE_DRY});
 
-    traits.add_supported_custom_fan_mode(fan_modes::FAN_AUTO);
-    //traits.add_supported_custom_fan_mode(fan_modes::FAN_QUIET);
-    traits.add_supported_custom_fan_mode(fan_modes::FAN_LOW);
-   // traits.add_supported_custom_fan_mode(fan_modes::FAN_MEDL);
-    traits.add_supported_custom_fan_mode(fan_modes::FAN_MED);
-    //traits.add_supported_custom_fan_mode(fan_modes::FAN_MEDH);
-    traits.add_supported_custom_fan_mode(fan_modes::FAN_HIGH);
-    traits.add_supported_custom_fan_mode(fan_modes::FAN_TURBO);
+    traits.add_supported_fan_mode(climate::CLIMATE_FAN_AUTO);
+    //traits.add_supported_fan_mode(climate::CLIMATE_FAN_QUIET);
+    traits.add_supported_fan_mode(climate::CLIMATE_FAN_LOW);
+   // traits.add_supportedcustom__fan_mode(climate::CLIMATE_FAN_MEDL);
+    traits.add_supported_fan_mode(climate::CLIMATE_FAN_MEDIUM);
+    //traits.add_supported_custom_fan_mode(climate::CLIMATE_FAN_MEDH);
+    traits.add_supported_fan_mode(climate::CLIMATE_FAN_HIGH);
+    traits.add_supported_fan_mode(climate::CLIMATE_FAN_FOCUS);
 
-    traits.set_supported_swing_modes({climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_BOTH,
-                                      climate::CLIMATE_SWING_VERTICAL, climate::CLIMATE_SWING_HORIZONTAL});
+    // traits.set_supported_swing_modes({climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_VERTICAL, climate::CLIMATE_SWING_BOTH, climate::CLIMATE_SWING_HORIZONTAL});
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_OFF);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_VERTICAL);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_BOTH);
+    traits.add_supported_swing_mode(climate::CLIMATE_SWING_HORIZONTAL);
 
     return traits;
 }
