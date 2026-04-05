@@ -184,12 +184,13 @@ class SinclairACCNT : public SinclairAC {
 
         bool reqmodechange = false;
         unsigned char lastpacket[60];
+        unsigned char lastroomtemp;
 
         bool verify_packet();
         void handle_packet();
 
         climate::ClimateMode determine_mode();
-        climate::ClimateFanMode determine_fan_mode();
+        const char* determine_fan_mode();
 
         std::string determine_vertical_swing();
         std::string determine_horizontal_swing();
